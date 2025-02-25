@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1 id="Hello">안녕하세요</h1>
+    <h1 class="name">김동규</h1>
+    <h1 id="hi">JS 초보에요</h1>
+    <p id="text">숙제</p>
+
+    <script>
+      document.getElementById('Hello').innerHTML = '안녕';
+      document.getElementsByClassName('name')[0].innerHTML = '1번째 강의';
+      document.getElementById('hi').innerHTML = 'JS 고수에요';
+      document.getElementsByTagName('h1')[0].style.color = 'red';
+      document.getElementsByTagName('h1')[1].style.color = 'blue';
+      document.getElementById('text').style.fontsize = '50px';
+    </script>
+
+    <!-- document 
+     문서인데 여기선 html 웹문서겠죠
+    마침표 -> ~의   
+    getElementById('어쩌구') -> 아이디가 '어쩌구'인 html 요소 (일명 element) 를 찾으셈  
+    innerHTML -> 딱봐도 그냥 내부 HTML이라는 뜻인듯 
+    = -> 등호는 프로그래밍에서 오른쪽에 있는걸 왼쪽에 대입하라는 뜻입니다. 
+    '바보' -> 바보라는 문자 (큰따옴표, 작은따옴표안에 담겨있으면 항상 문자입니다.)-->
+  </body>
+</html>
