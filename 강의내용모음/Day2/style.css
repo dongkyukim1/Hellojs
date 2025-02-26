@@ -76,3 +76,38 @@ button:active {
 .alert-box2 button:hover {
   background-color: lightgray;
 }
+
+.alert_pink {
+  width: 90%;
+  height: 50px;
+  border-radius: 10px;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  background-color: rgb(240, 163, 163);
+}
+
+.alert_skyblue {
+  width: 90%;
+  height: 50px;
+  border-radius: 10px;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  background-color: rgb(163, 209, 240);
+}
+
+.alert_grey {
+  width: 90%;
+  height: 50px;
+  border-radius: 10px;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  background-color: rgba(236, 236, 236, 0.736);
+}
+h3 {
+  width: 100%;
+  text-align: right;
+  margin: 0; /* 기본 마진 제거 */
+}

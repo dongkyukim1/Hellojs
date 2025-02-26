@@ -26,7 +26,20 @@
       2번째 알림창
       <button onclick="hideSecondAlert()">X</button>
     </div>
-
+    <div class="alert_pink">
+      Holy gucamole! You should check in some of those fields below.
+      <h3 onclick="hideAlertPink()">X</h3>
+    </div>
+    <br />
+    <div class="alert_skyblue">
+      Holy gucamole! You should check in some of those fields below.
+      <h3 onclick="hideAlertSkyblue()">X</h3>
+    </div>
+    <br />
+    <div class="alert_grey">
+      Holy gucamole! You should check in some of those fields below.
+      <h3 onclick="hideAlertGrey()">X</h3>
+    </div>
     <script>
       /**
        * 첫 번째 알림창을 표시하는 함수
@@ -54,6 +67,17 @@
        */
       function hideSecondAlert() {
         document.querySelector('.alert-box2').style.display = 'none';
+      }
+
+      function hideAlertPink() {
+        document.querySelector('.alert_pink').style.display = 'none';
+      }
+
+      function hideAlertSkyblue() {
+        document.querySelector('.alert_skyblue').style.display = 'none';
+      }
+      function hideAlertGrey() {
+        document.querySelector('.alert_grey').style.display = 'none';
       }
     </script>
   </body>
