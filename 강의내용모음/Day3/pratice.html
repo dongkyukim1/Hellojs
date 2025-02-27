@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="alert-box" style="background-color: rgb(133, 227, 39);">
+        <p id="message"> 여기에 메세지가 추가</p>
+    </div>
+
+    <button onclick="알림창메세지('id')">id</button>
+    <button onclick="알림창메세지('password')">password</button>
+    <button onclick="알림창메세지('close')">close</button>
+
+
+    <script>
+        function 알림창메세지(type){
+            let message = document.getElementById('message')
+
+            if(type ==='id'){
+                message.textContent ='아이디';
+            }else if(type ==='password'){
+                message.textContent='비밀번호';
+            }else if(type ==='close'){
+                message.textContent='';
+            }
+        }
+    </script>
+</body>
+</html>
