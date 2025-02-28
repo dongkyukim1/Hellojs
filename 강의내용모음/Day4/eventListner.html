@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트리스너</title>
+</head>
+<body>
+
+    <!-- 클래스 네임 셀렉터 문법 -->
+    <!-- id로 찿는게 귀찮다면 -->
+    <!-- class 같은 이름이 많다면 [0]; 인덱스로 찿게해야한다.  -->
+    <div id="alert-box" style="background-color: rgb(133, 227, 39);">
+        <p class="message"> 여기에 메세지가 추가</p>
+    </div>
+
+    <!-- onclick="알림창메세지('id') 이거 자체를 addEventListner() -->
+    <!-- click 뿐 아니라 scorll 등등 유저가 하는 모든행위 이벤트 변수로 사용가능 -->
+    <!-- 파라미터 자리에 들어가는 항수 function(){} 콜백함수라한다. -->
+    <button id ="close">닫기</button>
+
+
+    <script>
+        document.getElementById('close').addEventListener('mouseover',function(){
+            document.getElementById('alert-box').style.display="none";
+    });
+    document.getElementById('close').addEventListener('click',function(){
+            document.getElementById('alert-box').style.display="block";
+    });
+    
+    </script>
+</body>
+</html>
