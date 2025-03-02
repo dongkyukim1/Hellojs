@@ -48,8 +48,12 @@
       $('.hello').addClass('show');
 
       //id는 # m hide는 display = none;
-      $('#btn').on('click',function(){
-        $('.hello').slideUp()
+      $('#btn').on('click', function(){
+          $('.hello').slideToggle(); // slideUp() & slideDown() 자동 실행
+      });
+
+      $('.navbar-toggler-icon').on('click',function(){
+        $('.list-group').slideToggle();
       })
     </script>
 
