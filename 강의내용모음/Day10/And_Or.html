@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 타입,비교연산자 -->
+     <!-- == , === 느슨한 비교 vs 엄격한 비교  -->
+    <script>
+        if(1 !== 2){
+            console.log('true');
+        }
+        if(1 !=='1'){
+            console.log('true');
+        }
+    </script>
+    <!-- 조건 두개 동시에 비교하고싶다면? && and , || or -->
+     <script>
+        if(1 === 1 && 2 === '2'){
+            console.log('true');
+        }
+     </script>
+    3의 배수는 '박수'
+    <div>
+    <input type="number" id="num">
+    <button type="submit" id="확인">로그인</button>
+</div>
+    <script>
+        document.getElementById('확인').addEventListener('click', function(){   
+        if(document.getElementById('num').value % 3 === 0 && document.getElementById('num').value % 9 === 0){
+            console.log('박수박수');
+        }else if(document.getElementById('num').value % 3 === 0){
+            console.log('박수');
+        }else if(document.getElementById('num').value % 3 !== 0){
+            console.log('통과');
+        }});
+    </script>
+        
+        <div> 
+            <input type="number" id="class1">
+            <input type="number" id="class2">
+            <button type="submit" id="total">제출</button>
+        </div>
+
+        <script>
+            document.getElementById('total').addEventListener('click', function(){
+                let sum = Number(document.getElementById('class1').value) + Number(document.getElementById('class2').value);
+
+                if(sum >= 120){
+                    console.log('합격');
+                }else{
+                    console.log('불합격');
+                } 
+                });
+        </script>
+</body>
+</html>
