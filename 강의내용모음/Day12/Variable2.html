@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 변수의 선언,할당,범위 -->
+    <!-- var vs let vs const  -->
+    <!-- let,const은 재선언 불가능 +const는 재할당x -->
+    <!-- funtion 범위는 var 펑션 ,  let const는 {} -->
+    <script>
+      //선언      할당
+      var 이름 = "kim";
+      //할당만 따로도 가능 , 재할당도
+      // 이름 = 'park';
+      //함수 바깥에서만든 함수는 안에서 가능
+      function 함수() {
+        var 이름 = "kim";
+      }
+      console.log(이름);
+
+      function checkScope() {
+        if (true) {
+          var varVariable = "var 변수"; // 함수 스코프: 전체 함수에서 접근 가능
+          let letVariable = "let 변수"; // 블록 스코프: if문 내부에서만 접근 가능
+          const constVariable = "const 변수"; // 블록 스코프: if문 내부에서만 접근 가능
+        }
+
+        console.log(varVariable); // "var 변수" 출력됨
+        // 아래 두 줄의 주석을 제거하면 에러 발생: letVariable, constVariable은 if문 블록을 벗어나면 접근할 수 없음
+        // console.log(letVariable);
+        // console.log(constVariable);
+      }
+
+      checkScope();
+    </script>
+  </body>
+</html>
