@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 자바스크립트 문법 vs 브라우저 사용법 -->
+    <div class="alert-danger" style="background-color: red; color: white;">
+        5초 후 안보이게게
+        <!-- 5초후 안보이게 -->
+    </div>
+    <br>
+    <div class="alert-interval">
+        5초 마다 알람
+    </div>
+    <script>
+        setTimeout(function(){
+            document.querySelector('.alert-danger').style.display = 'none';
+        }, 5000);
+        
+    </script>
+    <script>
+        let count = 4;
+        setInterval(function(){
+            document.querySelector('.alert-interval').innerText = count + '초 후 알람';
+            count--;
+        }, 1000);
+        setTimeout(function(){
+            document.querySelector('.alert-interval').style.display = 'none';
+        }, 5000);   
+    </script>
+</body>
+</html>
