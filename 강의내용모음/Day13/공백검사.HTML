@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숙제</title>
+</head>
+<body>
+    <form id="form">
+    <input type="text" id="input">
+    <button type="submit">확인</button> 
+    </form>
+    <script>
+        document.getElementById('form').addEventListener('submit',function(){
+            let value = document.getElementById('input').value.trim();
+            if(value === ""){
+                alert('공백이다.')
+            }else{
+                alert('아니다')
+            }
+        })
+      
+    </script>
+</body>
+</html>
