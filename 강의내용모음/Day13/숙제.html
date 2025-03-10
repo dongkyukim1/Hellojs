@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숙제</title>
+</head>
+<body>
+    <form id="form">
+        <input id="영어대문자">
+        <button id="제출">제출</button>
+    </form>
+
+    <script>
+        document.getElementById('form').addEventListener('submit',function(){
+            var check = document.getElementById('영어대문자').value;
+            const reg = /[A-Z]/;
+            if(reg.test(check)){
+                alert('대문자 오키')
+            }else{
+                alert('대문자노키키')
+            }
+        })
+    </script>
+</body>
+</html>

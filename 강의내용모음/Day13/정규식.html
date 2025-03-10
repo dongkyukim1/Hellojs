@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규식 테스트</title>
+</head>
+<body>
+    <input type="text" id="input">
+    <button type="button" onclick="check()">확인</button> <!-- 버튼 타입을 "button"으로 설정 -->
+
+    <form id="form_2">
+        <input type="text" id="input_2">
+        <button type="submit">확인</button> <!-- 버튼 기본 타입은 submit -->
+    </form>
+
+    <script>
+        function check() {
+            const input = document.getElementById('input').value;
+            const reg = /[A-Z]/;
+            if (reg.test(input)) {
+                console.log('대문자 영어가 포함되어 있습니다.');
+            } else {
+                console.log('대문자 영어가 포함되어 있지 않습니다.');
+            }
+        }
+
+        document.getElementById('form_2').addEventListener('submit', function(e) {
+            e.preventDefault(); // 폼이 실제로 제출되지 않도록 방지
+            const input2 = document.getElementById('input_2').value;
+            const reg = /[A-Z]/;
+            if (reg.test(input2)) {
+                console.log('대문자 영어가 포함되어 있습니다.');
+            } else {
+                console.log('대문자 영어가 포함되어 있지 않습니다.');
+            }
+        });
+    </script>
+</body>
+</html>
