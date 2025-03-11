@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carousel UI</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="carousel-container">
+      <div class="slide_box">
+        <div class="slide">
+          <img src="../images/lone-tree.jpg" alt="Slide 1" />
+        </div>
+        <div class="slide">
+          <img
+            src="../images/charles-causse-AH614Olr-5g-unsplash.jpg"
+            alt="Slide 2"
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="../images/view-old-tree-lake-with-snow-covered-mountains-cloudy-day.jpg"
+            alt="Slide 3"
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="../images/charles-causse-JYVrWa0oDHM-unsplash.jpg"
+            alt="Slide 4"
+          />
+        </div>
+      </div>
+    </div>
+
+    <button id="prev">이전</button>
+    <button id="next">다음</button>
+
+    <script>
+      let count = 0;
+      const slides = document.querySelectorAll(".slide");
+      const totalSlides = slides.length;
+      const slideBox = document.querySelector(".slide_box");
+      const containerWidth = 300; // 고정 크기
+
+      document.getElementById("next").addEventListener("click", function () {
+        if (count < totalSlides - 1) {
+          count++;
+        } else {
+          count = 0; // 마지막이면 처음으로 돌아감
+        }
+        slideBox.style.transform = `translateX(-${count * containerWidth}px)`;
+      });
+
+      document.getElementById("prev").addEventListener("click", function () {
+        if (count > 0) {
+          count--;
+        } else {
+          count = totalSlides - 1; // 처음이면 마지막으로 이동
+        }
+        slideBox.style.transform = `translateX(-${count * containerWidth}px)`;
+      });
+    </script>
+  </body>
+</html>
