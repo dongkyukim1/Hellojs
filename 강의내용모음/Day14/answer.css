@@ -1,0 +1,12 @@
+.slide_container{
+    width: 300vw;
+    transition: all 1s;
+    transform: translateX(-100vw);
+}
+.slide_box{
+    width: 100vw;
+    float: left;
+}
+.slide_box img{
+    width: 100%;
+}

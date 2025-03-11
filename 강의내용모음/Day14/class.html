@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="answer.css">
+</head>
+<body>
+    <div style="overflow: hidden;">
+        <div class="slide_container" style="display: flex; transition: transform 0.5s ease;">
+            <div class="slide_box">
+                <img src="../images/car1.png">
+            </div>
+            <div class="slide_box">
+                <img src="../images/car2.png">
+            </div>
+            <div class="slide_box">
+                <img src="../images/car3.png">
+            </div>
+        </div>
+        <button id="prev">이전</button>
+        <button id="next">다음</button>
+    </div>
+
+    <script>
+        var count = 0;
+        var slideContainer = document.querySelector('.slide_container');
+        var totalSlides = document.querySelectorAll('.slide_box').length;
+
+        document.getElementById('next').addEventListener('click', function() {
+            if (count < totalSlides - 1) { 
+                count++;
+                slideContainer.style.transform = `translateX(-${count * 100}vw)`;
+            }
+        });
+
+        document.getElementById('prev').addEventListener('click', function() {
+            if (count > 0) {
+                count--;
+                slideContainer.style.transform = `translateX(-${count * 100}vw)`;
+            }
+        });
+    </script>
+</body>
+</html>
