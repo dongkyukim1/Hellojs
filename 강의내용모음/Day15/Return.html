@@ -1,61 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Return</title>
-  </head>
-  <body>
-    <!-- 함수 쓰고 그자리에 뱉고싶으면 return -->
-    <!-- 리턴은 함수 종료 기능도 가지고 있슴   -->
-    <!--소수점 연산은 오류가 있을수있다.-->
-
-    <!-- <소수점 반올림하는방법>
-    숫자.toFixed -> 문자로 바뀌는 소수점변환이다.  -->
-    parseFloat 이런거 써야된다 자바스크립트 + 연산자 특징 '문자'+123 = '문자123'
-    '문자'+ '문자' ='문자문자자' --> 오늘의 숙제 : Q1. 함수에 분과 초를 차례로
-    파라미터로 입력하면 ms단위로 바꿔서 뱉어주는 함수를 만들어봅시다. (1초 ==
-    1000ms 입니다)(1분은 60000ms) Q2. 가격을 파라미터로 입력하면 10% 할인된
-    가격을 뱉는 함수를 만들어봅시다. 근데 첫 구매여부도 true/false로
-    둘째파라미터에 입력해서 첫 구매가 맞을 경우 추가로 1.5 달러도
-    할인해줘야합니다. 주의사항은 가격으로 10.3 이런거 넣으면 소수로 인한 오차도
-    나올 수도 있으니 오차는 깔끔하게 처리해보든가 합시다.
-
-    <script>
-      console.log(vat(50000));
-
-      function vat(a) {
-        return a * 1.1;
-      }
-    </script>
-
-    <script>
-      console.log(소수점(50000));
-      function 소수점(a) {
-        var num = (a * 1.1).toFixed(1);
-        return parseFloat(num);
-      }
-    </script>
-
-    <script>
-      console.log(timeToms(1, 30) + 'ms');
-      console.log(timeToms(2, 10) + 'ms');
-
-      function timeToms(a, b) {
-        return a * 60000 + b * 1000;
-      }
-    </script>
-
-    <script>
-      console.log(discount(70, false));
-      console.log(discount(10, true));
-      function discount(price, isFirstPurchase) {
-        var result = price * 0.9;
-        if (isFirstPurchase) {
-          result -= 1.5;
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Function Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
         }
-        return parseFloat(result.toFixed(2));
-      }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background: #e7f3ff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript Function Outputs</h1>
+        
+        <p>Q1. 함수에 분과 초를 차례로 파라미터로 입력하면 ms단위로 바꿔서 뱉어주는 함수를 만들어봅시다. (1초 == 1000ms 입니다)(1분은 60000ms)</p>
+        <p>Q2. 가격을 파라미터로 입력하면 10% 할인된 가격을 뱉는 함수를 만들어봅시다. 근데 첫 구매여부도 true/false로 둘째파라미터에 입력해서 첫 구매가 맞을 경우 추가로 1.5 달러도 할인해줘야합니다. 주의사항은 가격으로 10.3 이런거 넣으면 소수로 인한 오차도 나올 수도 있으니 오차는 깔끔하게 처리해보든가 합시다.</p>
+        
+        <div class="result">
+            <strong>VAT 포함 가격 (50000원):</strong> <span id="vatResult"></span>
+        </div>
+
+        <div class="result">
+            <strong>소수점 변환 (50000원):</strong> <span id="decimalResult"></span>
+        </div>
+
+        <div class="result">
+            <strong>시간을 ms로 변환 (1분 30초):</strong> <span id="timeResult"></span>
+        </div>
+        
+        <div class="result">
+            <strong>할인 가격 (첫 구매 아님, 70$):</strong> <span id="discountResult1"></span>
+        </div>
+
+        <div class="result">
+            <strong>할인 가격 (첫 구매, 10$):</strong> <span id="discountResult2"></span>
+        </div>
+    </div>
+
+    <script>
+        function vat(a) {
+            return a * 1.1;
+        }
+
+        function 소수점(a) {
+            var num = (a * 1.1).toFixed(1);
+            return parseFloat(num);
+        }
+
+        function timeToms(a, b) {
+            return a * 60000 + b * 1000;
+        }
+
+        function discount(price, isFirstPurchase) {
+            var result = price * 0.9;
+            if (isFirstPurchase) {
+                result -= 1.5;
+            }
+            return parseFloat(result.toFixed(2));
+        }
+
+        document.getElementById("vatResult").innerText = vat(50000) + " 원";
+        document.getElementById("decimalResult").innerText = 소수점(50000) + " 원";
+        document.getElementById("timeResult").innerText = timeToms(1, 30) + " ms";
+        document.getElementById("discountResult1").innerText = "$" + discount(70, false);
+        document.getElementById("discountResult2").innerText = "$" + discount(10, true);
     </script>
-  </body>
+</body>
 </html>
