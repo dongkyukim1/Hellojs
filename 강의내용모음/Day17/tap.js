@@ -9,14 +9,31 @@
 
 // + 기존에 있던 show 제거
 $('.tab-button').on('click', function(){
-  const idx = $(this).index(); // 클릭한 버튼의 index 가져오기
-  
-  $('.tab-button').removeClass('orange');
-  $('.tab-content').removeClass('show');
+  var 버튼 = $('.tab-button');
+  var 콘텐츠 = $('.tab-content');
+  var index = $(this).index(); // 클릭한 버튼의 index 가져오기
 
-  $('.tab-button').eq(idx).addClass('orange');
-  $('.tab-content').eq(idx).addClass('show');
+  // 모든 버튼과 콘텐츠에서 클래스 제거 (for문 사용)
+  for (let i = 0; i < 버튼.length; i++) {
+    버튼.eq(i).removeClass('orange');
+    콘텐츠.eq(i).removeClass('show');
+  }
+
+  // 클릭한 버튼과 콘텐츠에 클래스 추가
+  버튼.eq(index).addClass('orange');
+  콘텐츠.eq(index).addClass('show');
 });
+
+
+// $('.tab-button').on('click', function(){
+//   const idx = $(this).index(); // 클릭한 버튼의 index 가져오기
+//   var 버튼 = $('.tab-button');
+//   버튼.removeClass('orange');
+//   버튼.removeClass('show');
+
+//   버튼.eq(idx).addClass('orange');
+//   버튼.eq(idx).addClass('show');
+// });
 
   
 // document.getElementsByClassName('tab-button')[0].addEventListener('click',function(){
