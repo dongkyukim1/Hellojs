@@ -1,0 +1,25 @@
+  const idx = $(this).index(); // 클릭한 버튼의 index 가져오기
+  
+  $('.tab-button').removeClass('orange');
+  $('.tab-content').removeClass('show');
+
+  $('.tab-button').eq(idx).addClass('orange');
+  $('.tab-content').eq(idx).addClass('show');
+
+  eq 개념
+
+
+  자주쓰는 셀렉터는 변수에 넣어써라.
+
+  const idx = $(this).index(); // 클릭한 버튼의 index 가져오기    
+
+  for 반복붐ㄴ
+
+  for(횟수){
+    console.log
+    
+  }
+
+  횟수칸 let i = 0 ; i<3; i++ 고정
+왜 var -> let : 변수의 범위가 차이가 있어서 안된다. 
+3 -0 -> 반복횟수 
