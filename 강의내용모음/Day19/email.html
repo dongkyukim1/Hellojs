@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EmailJS 폼 테스트</title>
+
+    <!-- ✅ EmailJS 라이브러리 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("EmailJS 초기화 시작...");
+            emailjs.init("fCdH3h-KxtfHO1ZBR");  // ✅ 올바른 Public Key 설정
+
+            console.log("EmailJS 초기화 완료:", emailjs);
+
+            // ✅ 폼 제출 이벤트 리스너 추가
+            document.getElementById("contact-form").addEventListener("submit", function(event) {
+                event.preventDefault(); // 기본 제출 이벤트 방지
+                console.log("폼 제출 중...");
+
+                // ✅ 정확한 Service ID와 Template ID 입력
+                emailjs.sendForm("service_c7tpvtb", "template_wdsc0iq", this)
+                    .then((response) => {
+                        console.log("이메일 전송 성공:", response);
+                        alert("이메일이 성공적으로 전송되었습니다!");
+                    }, (error) => {
+                        console.error("이메일 전송 실패:", error);
+                        alert("이메일 전송에 실패했습니다.");
+                    });
+            });
+        });
+    </script>
+
+    <style>
+        /* ✅ Contact Form 스타일 */
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+        }
+        form label {
+            margin-top: 10px;
+        }
+        form input, form textarea {
+            padding: 8px;
+            margin-top: 5px;
+        }
+        form input[type="submit"] {
+            margin-top: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ EmailJS Contact Form -->
+    <form id="contact-form">
+        <input type="hidden" name="time" value="Mar 10 2025 08:46">
+        <label>Name</label>
+        <input type="text" name="name" required>
+        <label>Email</label>
+        <input type="email" name="email" required>
+        <label>Subject</label>
+        <input type="text" name="title" required>
+        <label>Message</label>
+        <textarea name="message" required></textarea>
+        <input type="submit" value="Send">
+    </form>
+
+</body>
+</html>
