@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 어레이_객체2 </title>
+</head>
+<body>
+    <body>
+            
+        <div class="container mt-3">
+          <div class="card p-3">
+            <h4>차량 정보</h4>
+            <h4 id="price">가격</h4>
+            <div id="output"></div>
+            <button id="changeCar" class="btn btn-primary mt-2">
+              차 정보 변경
+            </button>
+          </div>
+        </div>
+        
+        <script>
+        //    object 안에는 아무거나 다 넣을수 있음  -> 복잡한 자료에서 원하는 데이터 꺼내기 
+           var car2 = { name : '소나타', price : [50000,30000,20000] } 
+           console.log(car2.price[0])
+           function updateOutput(){
+            document.getElementById("price").innerHTML = car2.price
+           }
+           updateOutput();
+        </script>
+    <!-- 개발방식 1 완성된 html 파일 (ssr) 
+                   vs
+         개발방식 2 (csr) 빈 html 파일 + 데이터  (완성은 js가 하도록) 데이터바인딩 -->
+</body>
+</html>
