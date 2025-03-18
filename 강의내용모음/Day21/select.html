@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Bootstrap CSS 추가 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- jQuery 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+      .option-size {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- input , select 의 차이는 소비자의 예상답변 범위를 정하는 것이 크다 -->
+    <form class="container my-5 form-group">
+      <p>상품선택</p>
+      <!-- 첫 번째 select (상품 선택) -->
+      <select id="productSelect" class="form-select mt-2">
+        <option value="">상품을 선택하세요</option>
+        <option value="hat">모자</option>
+        <option value="shirt">셔츠</option>
+      </select>
+
+      <!-- 두 번째 select (셔츠 사이즈 선택) -->
+      <select id="sizeSelect" class="form-select mt-2 option-size">
+        <option>95</option>
+        <option>100</option>
+        <option>150</option>
+      </select>
+
+      <!-- 세 번째 select (모자 선택) -->
+      <select id="hatSelect" class="form-select mt-2 option-size">
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+      </select>
+
+      <!-- Input 버전 (자유 입력) -->
+      <input
+        type="text"
+        id="sizeInput"
+        class="form-control mt-2 option-size"
+        placeholder="사이즈를 입력하세요 (예: 95, M, L)"
+      />
+    </form>
+
+    <!-- ✅ JavaScript (Vanilla JS) --> 
+     <script>
+      document
+        .getElementById("productSelect")
+        .addEventListener("change", function () {
+          let hatSelect = document.getElementById("hatSelect");
+          let sizeSelect = document.getElementById("sizeSelect");
+          let sizeInput = document.getElementById("sizeInput");
+
+          if (this.value === "shirt") {
+            sizeSelect.style.display = "block"; // 셔츠 선택 시 select 보이기
+            hatSelect.style.display = "none"; // 모자 숨기기
+            sizeInput.style.display = "none"; // input 숨기기
+          } else if (this.value === "hat") {
+            hatSelect.style.display = "block"; // 모자 선택 시 select 보이기
+            sizeSelect.style.display = "none"; // 셔츠 숨기기
+            sizeInput.style.display = "none"; // input 숨기기
+          } else {
+            hatSelect.style.display = "none"; // 아무것도 선택되지 않으면 둘 다 숨김
+            sizeSelect.style.display = "none";
+            sizeInput.style.display = "none";
+          }
+        });
+    </script> 
+
+    
+  </body>
+</html>
