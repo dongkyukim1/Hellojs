@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AJAX 상품 사이즈</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    .form-hide {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="container my-5 form-group">
+    <p>상품선택</p>
+
+    <!-- 상품 선택 -->
+    <select id="product-select" class="form-select mt-2">
+      <option value="">상품을 선택하세요</option>
+      <option value="모자">모자</option>
+      <option value="셔츠">셔츠</option>
+      <option value="바지">바지</option>
+    </select>
+
+    <!-- 사이즈 선택 -->
+    <select id="size-select" class="form-select mt-2 form-hide"></select>
+  </form>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    $('.form-select').eq(0).on('input', function() {
+      var value = this.value; // 선택된 상품 값 가져오기
+  
+      if (value == '셔츠') {
+        $('.form-select').eq(1).removeClass('form-hide');
+        
+        // 기존 옵션을 초기화하고 새로운 옵션 추가
+        var 템플릿 = '<option value="95">95</option><option value="100">100</option>';
+        $('.form-select').eq(1).html(템플릿);
+      } 
+      else if (value == '바지') {
+        $('.form-select').eq(1).removeClass('form-hide');
+        
+        // 기존 옵션을 초기화하고 새로운 옵션 추가
+        var 템플릿 = '<option value="28">28</option><option value="30">30</option>';
+        $('.form-select').eq(1).html(템플릿);
+      } 
+      else {
+        // 다른 상품을 선택하면 숨김
+        $('.form-select').eq(1).addClass('form-hide').html('');
+      }
+    });
+    
+  </script>
+
+</body>
+</html>
