@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>상품 리스트</title>
+  </head>
+  <body>
+    <h1>상품 리스트</h1>
+    <div id="productList"></div>
+    <hr />
+    <!-- 장바구니 페이지로 이동하는 링크 -->
+    <a href="cart.html">장바구니 페이지 보기</a>
+
+    <script>
+      // 로컬 스토리지는 문자열만 저장 가능
+      // 객체(오브젝트)를 저장할 때는 JSON.stringify() 해야 함
+      // 꺼낼 때는 JSON.parse() 해야 함
+
+      // 예시 상품 데이터
+      var products = [
+        { id: 0, title: "Blossom Dress", price: 70000 },
+        { id: 1, title: "Springfield Shirt", price: 50000 },
+        { id: 2, title: "Black Monastery", price: 60000 },
+      ];
+
+      // 상품 목록을 화면에 표시
+      var container = document.getElementById("productList");
+      for (let i = 0; i < products.length; i++) {
+        // 상품 이름, 가격, "주문하기" 버튼
+        var item = document.createElement("p");
+        item.innerHTML = `
+        ${products[i].title} / ${products[i].price}원 
+        <button class="buyBtn">주문하기</button>
+      `;
+        container.appendChild(item);
+      }
+
+      // "주문하기" 버튼들 가져와서 이벤트 달기
+      var buyButtons = document.querySelectorAll(".buyBtn");
+      buyButtons.forEach(function (btn, index) {
+        btn.addEventListener("click", function () {
+          // 클릭된 상품 정보를 JSON으로 변환해 저장
+          let productObj = products[index];
+          let jsonData = JSON.stringify(productObj);
+
+          // key로 상품 이름을 써서 저장 (ex. "Blossom Dress")
+          localStorage.setItem(productObj.title, jsonData);
+
+          alert(`${productObj.title} (${productObj.price}원) 저장 완료!`);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>장바구니 페이지</title>
+  </head>
+  <body>
+    <h1>장바구니</h1>
+    <div id="cartOutput"></div>
+
+    <script>
+      // 메인 페이지에서 상품들을 (title을 key로) 저장해놨으므로,
+      // 그 제목을 통해 데이터를 가져올 수 있음
+      // 실제 프로젝트에서는 저장된 key들을 따로 관리하거나, 배열로 저장하면 더 편리
+
+      // 예제: 미리 우리가 저장했을 가능성이 있는 상품 타이틀들
+      var productTitles = [
+        "Blossom Dress",
+        "Springfield Shirt",
+        "Black Monastery",
+      ];
+
+      var cartDiv = document.getElementById("cartOutput");
+
+      // 각 상품 제목마다 로컬 스토리지에서 꺼내보기
+      productTitles.forEach(function (title) {
+        let jsonData = localStorage.getItem(title); // 문자열 or null
+        if (jsonData) {
+          // JSON 문자열 → JS 객체
+          let productObj = JSON.parse(jsonData);
+          // 화면에 표시
+          let p = document.createElement("p");
+          p.textContent = productObj.title + " / " + productObj.price + "원";
+          cartDiv.appendChild(p);
+        }
+      });
+    </script>
+  </body>
+</html>
