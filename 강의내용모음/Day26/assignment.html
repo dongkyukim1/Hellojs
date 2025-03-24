@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>상품 목록 예시</title>
+    <!-- 부트스트랩 CSS (CDN) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container my-4">
+      <div class="row">
+        <!-- 상품 카드들이 여기로 append 될 예정 -->
+      </div>
+    </div>
+
+    <!-- 카트 목록을 보여줄 영역 -->
+    <div class="row cart-area">
+      <!-- 카트에 담긴 상품 목록 표시용 -->
+    </div>
+
+    <!-- jQuery, Bootstrap JS (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // 예시용 상품 데이터
+      // 실제로는 서버에서 AJAX로 불러오거나, fetch() 등을 통해 가져올 수 있습니다.
+      const products = [
+        { title: "람보르기니", price: 100 },
+        { title: "페라리", price: 200 },
+        { title: "포르쉐", price: 300 },
+      ];
+
+      $(document).ready(function () {
+        // products 배열을 순회하면서 동적으로 HTML 구조를 만들어 .row에 붙입니다.
+        products.forEach((product) => {
+          const 템플릿 = `
+            <div class="col-sm-4 mb-3">
+              <img
+                src="https://via.placeholder.com/600"
+                class="w-100"
+                alt="${product.title}"
+              />
+              <h5>${product.title}</h5>
+              <p>가격 : $${product.price}</p>
+              <button class="buy btn btn-primary">구매</button>
+            </div>
+          `;
+          // .row 요소에 템플릿 HTML을 추가합니다.
+          $(".row").append(템플릿);
+        });
+
+        // 1. 구매버튼 클릭 이벤트는 반복문 밖에서 한 번만 등록
+        // 2. 지금 누른 버튼의 윗윗글자를 가져와서
+        // 3. 로컬스토리지에 [글자] 저장
+        //    (sibling 기능은 형제요소를 가져옴, 여기서는 h5 태그를 가져옴)
+        // 4. 이미 있는 항목 있으면 그 자료에 추가, 없으면 신규로 생성
+        // 5. 추가한 뒤, 중복 제거
+        $(".buy").click(function (e) {
+          var title = $(e.target).siblings("h5").text();
+          //만약에 이미 카트에 있으면 수정하기 그게아니면 아래로~
+          if (localStorage.getItem("cart") != null) {
+            // 로컬스토리지에 "cart" 키가 실제로 있는 경우
+            var 꺼낸거 = JSON.parse(localStorage.getItem("cart"));
+            꺼낸거.push(title);
+
+            // 중복 제거 (Set -> 배열로 다시 변환)
+            꺼낸거 = [...new Set(꺼낸거)];
+
+            localStorage.setItem("cart", JSON.stringify(꺼낸거));
+          } else {
+            // "cart" 키가 없으면 신규로 저장
+            localStorage.setItem("cart", JSON.stringify([title]));
+          }
+          // 로컬스토리지 업데이트 후, 화면에 카트 목록을 다시 렌더링
+          renderCart();
+        });
+
+        // 페이지가 로드될 때 기존에 저장된 카트가 있다면 화면에 표시
+        renderCart();
+      });
+
+      // -------------------------------------------------------
+      // 로컬스토리지 "cart" 데이터를 HTML에 표시하는 함수
+      // -------------------------------------------------------
+      function renderCart() {
+        // (1) 기존 카트 목록을 초기화
+        $(".cart-area").empty();
+
+        // (2) 로컬스토리지에서 cart 데이터 가져오기
+        const cartData = localStorage.getItem("cart");
+
+        // (3) 만약 cart 데이터가 있으면 파싱 후 HTML에 표시
+        if (cartData) {
+          const parsedCart = JSON.parse(cartData);
+
+          // 카트 배열을 순회하면서 HTML 생성
+          parsedCart.forEach((item) => {
+            const cartItemHTML = `
+              <div class="col-sm-12 mb-1">
+                <p>카트에 담긴 상품 : ${item}</p>
+              </div>
+            `;
+            $(".cart-area").append(cartItemHTML);
+          });
+        } else {
+          // cart가 없으면 안내문구 출력
+          const noItemHTML = `
+            <div class="col-sm-12">
+              <p>카트가 비어있습니다.</p>
+            </div>
+          `;
+          $(".cart-area").append(noItemHTML);
+        }
+      }
+    </script>
+  </body>
+</html>
