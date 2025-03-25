@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Positon stiky</title>
+    <link href="main.css" rel="stylesheet" />
+  </head>
+  <body style="background-color: grey; height: 3000px">
+    <!-- 포지션 스티키 잘쓰는게 애플닷컴 놈들  -->
+    <!-- 포지션 fix 랑 비슷함  fixed + 조건 = sticky-->
+    <!-- (주의점) position : sticky는
+
+    1. 스크롤을 할 만한 부모 박스가 있어야하고
+    2. top 등 좌표속성과 함께 써야 제대로 보입니다. 
+    아무튼 응용하면 남들과는 다른 레이아웃을 만들 수 있습니다. 
+    스크롤을 움직였을때 이미지를 바꾸려면 css 만으로는 비효율 js 써라  -->
+    <section class="container">
+      <div class="image-sticky">
+        <img id="productImage" src="image1.jpg" alt="Apple Mac mini" />
+      </div>
+      <div class="content">
+        <div class="text-block">
+          <h2>작지만 강력한 성능</h2>
+          <p>
+            Apple의 Mac mini는 작고 세련된 디자인 안에 강력한 성능을 담은
+            데스크탑 컴퓨터입니다. M 시리즈 칩(M1, M2, M2 Pro 등)을 탑재한 최신
+            모델은 뛰어난 속도, 전력 효율성, 그리고 부드러운 macOS 환경을
+            제공합니다.
+          </p>
+        </div>
+        <div class="text-block">
+          <h2>컴팩트한 디자인</h2>
+          <p>
+            작은 크기지만 다양한 연결 포트를 제공하여 데스크 환경을 깔끔하게
+            유지할 수 있습니다.
+          </p>
+        </div>
+        <div class="text-block">
+          <h2>생산성 극대화</h2>
+          <p>
+            고성능 칩셋과 macOS의 최적화 덕분에 빠르고 부드러운 멀티태스킹이
+            가능합니다.
+          </p>
+        </div>
+      </div>
+    </section>
+    <script>
+      const productImage = document.getElementById("productImage");
+
+      window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+
+        if (scrollY < 600) {
+          productImage.src = "image1.jpg";
+        } else if (scrollY < 1200) {
+          productImage.src = "image2.jpg";
+        } else {
+          productImage.src = "image3.jpg";
+        }
+      });
+    </script>
+  </body>
+</html>
