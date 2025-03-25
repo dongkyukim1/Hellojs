@@ -1,0 +1,23 @@
+.card-background {
+  height: 3000px;
+  margin-top: 800px;
+  margin-bottom: 1600px;
+}
+
+.card-box {
+  /* 카드 고정 후 아래에서 위로 덮어버림 + 화면 중앙 정렬 */
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+}
+
+.card-box img {
+  /* 가운데정렬 */
+  max-width: 80%;
+  height: auto;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
