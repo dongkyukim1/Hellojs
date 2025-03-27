@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>캐러셀 스와이프</title>
+    <!--  터치랑 마우스 클릭은 다르니까 함수 적용할떄 생각하자 -->
+    <!-- ✅ Swiper.js CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <!-- ✅ Swiper.js 슬라이더 -->
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="../images/car1.png" alt="Slide 1" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../images/car2.png" alt="Slide 2" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../images/car3.png" alt="Slide 3" />
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- ✅ AOS 애니메이션 요소 -->
+    <div style="height: 100vh"></div>
+    <!-- 스크롤 테스트용 공간 추가 -->
+    <div
+      data-aos="fade-left"
+      style="width: 200px; height: 200px; background-color: red"
+    >
+      왼쪽에서 나타나는 애니메이션
+    </div>
+
+    <!-- ✅ 외부 스크립트 로드 -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper(".swiper", {
+          loop: true,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+        });
+
+        // ✅ AOS 초기화
+        AOS.init({
+          duration: 1000,
+          once: false,
+        });
+      });
+    </script>
+  </body>
+</html>
