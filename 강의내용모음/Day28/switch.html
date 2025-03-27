@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스위치</title>
+    <link href="epl.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="epl">
+      <h4>EPL 최고의 팀은</h4>
+      <button>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg"
+          alt="리버풀"
+        />리버풀
+      </button>
+      <button>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg"
+          alt="아스날"
+        />아스날
+      </button>
+      <button>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg"
+          alt="토트넘"
+        />토트넘
+      </button>
+      <button>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg"
+          alt="첼시"
+        />첼시
+      </button>
+      <button>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg"
+          alt="맨시티"
+        />맨시티
+      </button>
+      <button>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"
+          alt="맨유"
+        />맨유
+      </button>
+    </div>
+    <script>
+      document.querySelector("#epl").addEventListener("click", function (e) {
+        // alert(e.target.innerHTML);
+        if (e.target.tagName === "BUTTON") {
+          const 팀이름 = e.target.innerText;
+          switch (팀이름) {
+            case "리버풀":
+              alert("리버풀임이네여");
+              break;
+            case "아스날":
+              alert("아스날도 잘하지");
+              break;
+            case "토트넘":
+              alert("토트넘엔 손흥민!");
+              break;
+            case "첼시":
+              alert("첼시는 부활할까?");
+              break;
+            case "맨시티":
+              alert("지금은 맨시티 전성기!");
+              break;
+            case "맨유":
+              alert("전통 강호 맨유!");
+              break;
+            default:
+              alert("모르는 팀이네요");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
